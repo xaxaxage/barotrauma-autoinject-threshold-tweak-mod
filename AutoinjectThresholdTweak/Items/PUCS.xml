@@ -110,7 +110,7 @@
       </ItemComponent>
     </Wearable>
     <Holdable slots="RightHand+LeftHand" controlpose="true" holdpos="0,-50" handle1="-10,-20" handle2="10,-20" holdangle="45" msg="ItemMsgPickUpUse" canbeselected="false" canbepicked="true" pickkey="Use" />
-    <!-- CHANGED: autoinjectthreshold="0.3" (vanilla: not set, default 0.5); overwritten at runtime by the panel below -->
+    <!-- CHANGED: autoinjectthreshold="0.3" (vanilla: not set, default 0.5); overwritten at runtime by the value stored below -->
     <ItemContainer capacity="0" maxstacksize="0" hideitems="true" containedstateindicatorstyle="tank" containedstateindicatorslot="0" autoinjectthreshold="0.3" autoinject="true">
       <Containable items="none" />
       <SlotIcon slotindex="0" texture="Content/UI/StatusMonitorUI.png" sourcerect="64,448,64,64" origin="0.5,0.5" />
@@ -155,10 +155,10 @@
         <Containable items="chem,syringe" />
       </SubContainer>
     </ItemContainer>
-    <!-- ADDED: in-game threshold panel. The value (percent of health) is stored in this component's ManuallySelectedSound:
+    <!-- ADDED: hidden storage for the threshold (percent of health); this panel itself is never shown. The value lives in ManuallySelectedSound:
          an int the game already saves and syncs in multiplayer, and that does nothing on a component without sounds.
-         Lua/Autorun/AutoinjectThreshold.lua copies it into ItemContainer.AutoInjectThreshold and shows the panel
-         only while the item is held in hands or while the player's own health window is open. -->
+         Lua/Autorun/AutoinjectThreshold.lua copies it into ItemContainer.AutoInjectThreshold, and its settings window
+         (right-click the item in the inventory) types new values into this input, so saving and multiplayer sync stay vanilla. -->
     <CustomInterface canbeselected="false" drawhudwhenequipped="false" allowuioverlap="true" manuallyselectedsound="30">
       <GuiFrame relativesize="0.25,0.07" minsize="440,64" anchor="CenterRight" pivot="CenterRight" relativeoffset="0.02,0" style="ItemUI" />
       <IntegerInput text="autoinjectthresholdtweak.label" propertyname="ManuallySelectedSound" targetonlyparentproperty="true" min="0" max="95" step="5" />

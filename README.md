@@ -13,25 +13,22 @@ In vanilla both items always inject at 50% health. With this mod every item has 
 
 ## How to use
 
-A small settings panel appears on the right side of the screen when you:
-
-- hold the item in your hands, or
-- wear it and open your own health window (H by default, or click your portrait).
+**Right-click the item in your inventory** (worn, held or in your backpack) to open its settings window. The window shows the item's name, so you always know which one you're changing. Close it with the ✕ button or by right-clicking the item again.
 
 ## Requirements
 
-- [Lua For Barotrauma](https://steamcommunity.com/sharedfiles/filedetails/?id=2559634234) powers the panel. In multiplayer it must also be installed on the server.
-- Without Lua the items still work with the default values, the panel just doesn't show up.
+- [Lua For Barotrauma](https://steamcommunity.com/sharedfiles/filedetails/?id=2559634234) powers the settings window. In multiplayer it must also be installed on the server.
+- Without Lua the items still work with the default values, there's just no way to change them.
 
 Built for Barotrauma 1.13.4.0. Not compatible with other mods that override `autoinjectorheadset` or `pucs`.
 
 ## How it works
 
-- `Items/*.xml` are full overrides of the vanilla items. The only changes are marked `CHANGED` / `ADDED`: a default `autoinjectthreshold` on the `ItemContainer` and a `CustomInterface` panel with an integer input.
-- The input stores the percentage in the panel's own `ManuallySelectedSound` property: an int that the game already saves and syncs in multiplayer, and that does nothing on a component without sounds.
+- `Items/*.xml` are full overrides of the vanilla items. The only changes are marked `CHANGED` / `ADDED`: a default `autoinjectthreshold` on the `ItemContainer` and a hidden `CustomInterface` with an integer input.
+- That input stores the percentage in the component's own `ManuallySelectedSound` property: an int that the game already saves and syncs in multiplayer, and that does nothing on a component without sounds. The `CustomInterface` itself is never drawn (`drawhudwhenequipped="false"`).
 - `Lua/Autorun/AutoinjectThreshold.lua`:
   - copies that percentage into `ItemContainer.AutoInjectThreshold` (server and client). The game doesn't save the threshold itself, so this also restores it after loading a save;
-  - on the client, toggles the panel's `DrawHudWhenEquipped` so it's only visible while the item is held or while the health window is open. Without this the game would show the panel for as long as the item is worn.
+  - on the client, opens its own settings window when one of the items is right-clicked in the player's inventory. New values are typed into the hidden `CustomInterface` input, which runs the vanilla code that stores the value and sends it to the server.
 
 ## Repository layout
 
@@ -64,4 +61,4 @@ The items are full overrides, so after Barotrauma updates the vanilla items (pri
 
 ## Кратко по-русски
 
-Мод для Barotrauma: порог автоинъекции гарнитуры-автоинъектора и УЗК настраивается прямо в игре (0–95%, по умолчанию 5% и 30%). Панель появляется справа, если взять предмет в руки или надеть его и открыть своё окно здоровья (H). Нужен [Lua For Barotrauma](https://steamcommunity.com/sharedfiles/filedetails/?id=2559634234), в мультиплеере и на сервере тоже.
+Мод для Barotrauma: порог автоинъекции гарнитуры-автоинъектора и УЗК настраивается прямо в игре (0–95%, по умолчанию 5% и 30%). Окно настройки открывается правым кликом по предмету в инвентаре, в заголовке указано название предмета, закрывается крестиком или повторным правым кликом. Нужен [Lua For Barotrauma](https://steamcommunity.com/sharedfiles/filedetails/?id=2559634234), в мультиплеере и на сервере тоже.

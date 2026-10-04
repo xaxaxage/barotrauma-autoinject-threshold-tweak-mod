@@ -19,11 +19,8 @@ This mod lets you decide when they fire: [b]per item, right in the game[/b].
 [/list]
 
 [h2]How to use[/h2]
-A small settings panel appears on the right side of the screen when you:
-[list]
-[*] [b]hold the item in your hands[/b], or
-[*] [b]wear it and open your health window[/b] (H by default, or click your portrait)
-[/list]
+[b]Right-click the item in your inventory[/b] (worn, held or in your backpack) to open its settings window. The window title shows which item you're adjusting. Close it with the ✕ button or right-click the item again.
+
 Type a number or use the +/− buttons. [b]0%[/b] means "only once I'm knocked out".
 
 [table]
@@ -34,7 +31,7 @@ Type a number or use the +/− buttons. [b]0%[/b] means "only once I'm knocked o
 
 [h2]Requirements[/h2]
 [list]
-[*] [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2559634234]Lua For Barotrauma[/url]: powers the in-game panel
+[*] [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2559634234]Lua For Barotrauma[/url]: powers the settings window
 [*] Multiplayer: Lua For Barotrauma must also be installed on the server
 [/list]
 No Lua? The items still work with the default values, you just can't change them.
@@ -64,16 +61,13 @@ No Lua? The items still work with the default values, you just can't change them
 [/list]
 
 [h2]Как пользоваться[/h2]
-Небольшая панель настройки появляется в правой части экрана, если:
-[list]
-[*] [b]взять предмет в руки[/b] или
-[*] [b]надеть его и открыть своё окно здоровья[/b] (по умолчанию H или клик по портрету)
-[/list]
+[b]Кликните правой кнопкой мыши по предмету в инвентаре[/b] (надетому, в руках или в рюкзаке), чтобы открыть окно его настройки. В заголовке окна указано, какой это предмет. Закрыть окно можно крестиком или повторным правым кликом.
+
 Введите число или нажимайте +/−. [b]0%[/b] — укол только когда вы уже без сознания.
 
 [h2]Требования[/h2]
 [list]
-[*] [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2559634234]Lua For Barotrauma[/url]: нужен для панели настройки
+[*] [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2559634234]Lua For Barotrauma[/url]: нужен для окна настройки
 [*] Мультиплеер: Lua For Barotrauma должен быть установлен и на сервере
 [/list]
 Без Lua предметы работают со значениями по умолчанию, просто их нельзя изменить.
