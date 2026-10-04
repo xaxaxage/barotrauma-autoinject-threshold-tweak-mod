@@ -1,0 +1,67 @@
+# Autoinject Threshold Tweak
+
+A [Barotrauma](https://barotraumagame.com/) mod that lets you choose, right in the game, at what health the **Autoinjector Headset** and the **PUCS** use the medicine inside them.
+
+In vanilla both items always inject at 50% health. With this mod every item has its own setting from 0% to 95%, saved with the campaign and synced in multiplayer.
+
+| Item | Vanilla | Mod default |
+|---|---|---|
+| Autoinjector Headset (Medic talent) | 50% | 5% |
+| PUCS (Engineer talent) | 50% | 30% |
+
+![Preview](AutoinjectThresholdTweak/PreviewImage.png)
+
+## How to use
+
+A small settings panel appears on the right side of the screen when you:
+
+- hold the item in your hands, or
+- wear it and open your own health window (H by default, or click your portrait).
+
+## Requirements
+
+- [Lua For Barotrauma](https://steamcommunity.com/sharedfiles/filedetails/?id=2559634234) powers the panel. In multiplayer it must also be installed on the server.
+- Without Lua the items still work with the default values, the panel just doesn't show up.
+
+Built for Barotrauma 1.13.4.0. Not compatible with other mods that override `autoinjectorheadset` or `pucs`.
+
+## How it works
+
+- `Items/*.xml` are full overrides of the vanilla items. The only changes are marked `CHANGED` / `ADDED`: a default `autoinjectthreshold` on the `ItemContainer` and a `CustomInterface` panel with an integer input.
+- The input stores the percentage in the panel's own `ManuallySelectedSound` property: an int that the game already saves and syncs in multiplayer, and that does nothing on a component without sounds.
+- `Lua/Autorun/AutoinjectThreshold.lua`:
+  - copies that percentage into `ItemContainer.AutoInjectThreshold` (server and client). The game doesn't save the threshold itself, so this also restores it after loading a save;
+  - on the client, toggles the panel's `DrawHudWhenEquipped` so it's only visible while the item is held or while the health window is open. Without this the game would show the panel for as long as the item is worn.
+
+## Repository layout
+
+```
+AutoinjectThresholdTweak/   the mod itself (this folder is what gets published)
+  filelist.xml
+  Items/                    item overrides
+  Lua/Autorun/              Lua script
+  Texts/                    panel label (English, Russian)
+  PreviewImage.png          Workshop thumbnail
+workshop/description.txt    Steam Workshop description (BBCode)
+tools/make-preview.ps1      regenerates PreviewImage.png from game icons
+```
+
+## Development setup
+
+Link the mod folder into the game's `LocalMods` instead of copying it, so the game always loads the files from the repository (PowerShell, no admin rights needed):
+
+```powershell
+New-Item -ItemType Junction -Path "C:\Program Files (x86)\Steam\steamapps\common\Barotrauma\LocalMods\medmod" -Target "<path to repo>\AutoinjectThresholdTweak"
+```
+
+Keep the `.git` folder out of the mod folder: the game uploads everything inside it when publishing to the Workshop.
+
+## Updating after a game patch
+
+The items are full overrides, so after Barotrauma updates the vanilla items (prices, recipes, stats) the mod keeps the old versions. Re-copy them from `Content/Items/Jobgear/Engineer/engineer_talent_items.xml` and `Content/Items/Jobgear/Medic/medic_talent_items.xml`, re-apply the `CHANGED` / `ADDED` parts, then bump `gameversion` and `modversion` in `filelist.xml`.
+
+---
+
+## Кратко по-русски
+
+Мод для Barotrauma: порог автоинъекции гарнитуры-автоинъектора и УЗК настраивается прямо в игре (0–95%, по умолчанию 5% и 30%). Панель появляется справа, если взять предмет в руки или надеть его и открыть своё окно здоровья (H). Нужен [Lua For Barotrauma](https://steamcommunity.com/sharedfiles/filedetails/?id=2559634234), в мультиплеере и на сервере тоже.

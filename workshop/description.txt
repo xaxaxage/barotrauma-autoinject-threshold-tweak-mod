@@ -1,0 +1,92 @@
+=== TITLE ===
+Autoinject Threshold Tweak
+
+=== DESCRIPTION (Steam BBCode — paste as is) ===
+[h1]Autoinject Threshold Tweak[/h1]
+[i]Stop your autoinjector from wasting a syringe on a scratch.[/i]
+
+In vanilla, the Autoinjector Headset and the PUCS always fire at [b]50% health[/b]. A crawler scratches you down to 49% — and your one emergency syringe is gone before the real fight even starts.
+
+This mod lets you decide when they fire: [b]per item, right in the game[/b].
+
+[h2]Features[/h2]
+[list]
+[*] Set the auto-inject threshold anywhere from [b]0% to 95%[/b] health
+[*] Every item keeps its own value: a last-chance headset at 5%, a combat PUCS at 40%
+[*] Saved with your campaign and synced in multiplayer
+[*] Sensible defaults out of the box: [b]headset 5%, PUCS 30%[/b]
+[*] Everything else is vanilla: prices, recipes, stats and sprites are untouched
+[/list]
+
+[h2]How to use[/h2]
+A small settings panel appears on the right side of the screen when you:
+[list]
+[*] [b]hold the item in your hands[/b], or
+[*] [b]wear it and open your health window[/b] (H by default, or click your portrait)
+[/list]
+Type a number or use the +/− buttons. [b]0%[/b] means "only once I'm knocked out".
+
+[table]
+[tr][th]Item[/th][th]Vanilla[/th][th]Mod default[/th][/tr]
+[tr][td]Autoinjector Headset (Medic talent)[/td][td]50%[/td][td]5%[/td][/tr]
+[tr][td]PUCS (Engineer talent)[/td][td]50%[/td][td]30%[/td][/tr]
+[/table]
+
+[h2]Requirements[/h2]
+[list]
+[*] [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2559634234]Lua For Barotrauma[/url]: powers the in-game panel
+[*] Multiplayer: Lua For Barotrauma must also be installed on the server
+[/list]
+No Lua? The items still work with the default values, you just can't change them.
+
+[h2]Compatibility[/h2]
+[list]
+[*] Overrides the vanilla Autoinjector Headset and PUCS, so it conflicts with other mods that override these two items
+[*] Built for Barotrauma 1.13.4.0
+[/list]
+
+[hr][/hr]
+
+[h1]Описание на русском[/h1]
+[i]Хватит тратить шприц на царапину.[/i]
+
+В ванилле гарнитура-автоинъектор и УЗК всегда срабатывают при [b]50% здоровья[/b]. Ползун поцарапал вас до 49%, и единственный экстренный шприц потрачен ещё до настоящего боя.
+
+С этим модом вы сами решаете, когда делать укол: [b]для каждого предмета отдельно и прямо в игре[/b].
+
+[h2]Возможности[/h2]
+[list]
+[*] Порог автоинъекции от [b]0% до 95%[/b] здоровья
+[*] У каждого предмета своё значение: гарнитура на 5% как последний шанс, УЗК на 40% для затяжных боёв
+[*] Настройка сохраняется в кампании и синхронизируется в мультиплеере
+[*] Разумные значения по умолчанию: [b]гарнитура 5%, УЗК 30%[/b]
+[*] Всё остальное как в ванилле: цены, рецепты, характеристики и спрайты не тронуты
+[/list]
+
+[h2]Как пользоваться[/h2]
+Небольшая панель настройки появляется в правой части экрана, если:
+[list]
+[*] [b]взять предмет в руки[/b] или
+[*] [b]надеть его и открыть своё окно здоровья[/b] (по умолчанию H или клик по портрету)
+[/list]
+Введите число или нажимайте +/−. [b]0%[/b] — укол только когда вы уже без сознания.
+
+[h2]Требования[/h2]
+[list]
+[*] [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2559634234]Lua For Barotrauma[/url]: нужен для панели настройки
+[*] Мультиплеер: Lua For Barotrauma должен быть установлен и на сервере
+[/list]
+Без Lua предметы работают со значениями по умолчанию, просто их нельзя изменить.
+
+[h2]Совместимость[/h2]
+[list]
+[*] Переопределяет ванильные гарнитуру-автоинъектор и УЗК, поэтому конфликтует с модами, которые меняют эти же предметы
+[*] Сделан для Barotrauma 1.13.4.0
+[/list]
+
+=== TAGS (pick in the Publish tab) ===
+Items  (plus any "tweak / balance" style tag if the game offers one)
+
+=== AFTER PUBLISHING ===
+On the mod's Steam page: Owner Controls → "Add/Remove Required Items" → add Lua For Barotrauma (2559634234),
+so Steam installs it automatically for subscribers.
